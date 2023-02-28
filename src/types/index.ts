@@ -1,17 +1,23 @@
 export type Buttons = string[]
 
 export interface TickerData {
-    timestamp: string;
-    open: string;
-    high: string;
-    low: string;
-    last: string;
-    volume: string;
-    vwap: string;
-    bid: string;
-    ask: string;
-    open_24: string;
-    percent_change_24: string;
+  timestamp: number;
+  open: number;
+  high: number;
+  low: number;
+  last: number;
+  volume: number;
+  vwap: number;
+  bid: number;
+  ask: number;
+  open_24: number;
+  percent_change_24: number;
+  }
+
+  export type Last = Pick<TickerData, 'last'>;
+
+  export type BTCtoOthers = {
+    [key: string]: TickerData['last'];
   }
   
    

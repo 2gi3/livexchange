@@ -1,10 +1,10 @@
-import { Buttons } from "@/types";
+import { Buttons, TickerData, Last, BTCtoOthers } from "@/types";
 import Head from "next/head";
 
 export const getServerSideProps = async () => {
-  let bitstampData = null;
-  let coinbaseData = null;
-  let finexData = null;
+  let bitstampData: TickerData[] | null = null;
+  let coinbaseBTCtoOthers: BTCtoOthers | null = null;
+  let finexLast: Last | null = null;
   let buttonsData: Buttons = [
     "TES/TTT",
     "BTC/USD",
@@ -15,27 +15,49 @@ export const getServerSideProps = async () => {
   ];
 
   try {
-    let [bitstampData, finexData, coinbaseData, tradingPairs] =
+    let [bitstampData, finexLast, coinbaseBTCtoOthers, tradingPairs] =
       await Promise.all([
-        fetch("https://www.bitstamp.net/api/v2/ticker/").then((res) =>
-          res.json()
-        ),
-        fetch("https://api-pub.bitfinex.com/v2/tickers?symbols=tBTCUSD").then(
-          (res) => res.json()
-        ),
-        fetch("https://api.coinbase.com/v2/exchange-rates?currency=BTC").then(
-          (res) => res.json()
-        ),
-        fetch("https://www.bitstamp.net/api/v2/trading-pairs-info/").then(
-          (res) => res.json().then((json) => json.map((pair: any) => pair.name))
-        ),
+        fetch("https://www.bitstamp.net/api/v2/ticker/")
+          .then((res) => res.json())
+          .then((json) =>
+            json.map((obj: any) => {
+              return {
+                ...obj,
+                timestamp: Number(obj.timestamp),
+                open: Number(obj.open),
+                high: Number(obj.high),
+                low: Number(obj.low),
+                last: Number(obj.last),
+                volume: Number(obj.volume),
+                vwap: Number(obj.vwap),
+                bid: Number(obj.bid),
+                ask: Number(obj.ask),
+                open_24: Number(obj.open_24),
+                percent_change_24: Number(obj.percent_change_24),
+              };
+            })
+          ),
+        fetch("https://api-pub.bitfinex.com/v2/tickers?symbols=tBTCUSD")
+          .then((res) => res.json())
+          .then((json) => json[0][1]),
+        fetch("https://api.coinbase.com/v2/exchange-rates?currency=BTC")
+          .then((res) => res.json())
+          .then((json) =>
+            Object.entries(json.data.rates).reduce((acc: any, [key, value]) => {
+              acc[key] = Number(value);
+              return acc;
+            }, {})
+          ),
+        fetch("https://www.bitstamp.net/api/v2/trading-pairs-info/")
+          .then((res) => res.json())
+          .then((json) => json.map((pair: any) => pair.name)),
       ]);
 
     return {
       props: {
         bitstampData,
-        finexData,
-        coinbaseData,
+        finexLast,
+        coinbaseBTCtoOthers,
         tradingPairs,
       },
     };
@@ -44,8 +66,8 @@ export const getServerSideProps = async () => {
     return {
       props: {
         bitstampData,
-        finexData,
-        coinbaseData,
+        finexLast,
+        coinbaseBTCtoOthers,
         tradingPairs: buttonsData,
       },
     };
@@ -54,16 +76,17 @@ export const getServerSideProps = async () => {
 
 export default function Home({
   bitstampData,
-  coinbaseData,
-  finexData,
+  coinbaseBTCtoOthers,
+  finexLast,
   tradingPairs,
 }: {
   bitstampData: any;
-  coinbaseData: any;
-  finexData: any;
+  coinbaseBTCtoOthers: any;
+  finexLast: any;
   tradingPairs: Buttons;
 }) {
-  console.log(tradingPairs);
+  // console.log(tradingPairs);
+  console.log(coinbaseBTCtoOthers);
   return (
     <>
       <Head>
