@@ -17,7 +17,7 @@ export interface TickerData {
   export type Last = Pick<TickerData, 'last'>;
 
   export type BTCtoOthers = {
-    [key: string]: TickerData['last'];
+    [key: string]: Pick<TickerData, 'last'>;
   }
   
    
