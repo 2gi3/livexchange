@@ -24,4 +24,22 @@ export interface TickerData {
   export type AverageTicketValueProp={
     average: number | string
   }
+
+
+
+  // export interface BiggestMoversChartProps {
+  //   biggestMovers: {
+  //     pair: Pick<TickerData, "pair">;
+  //     percent_change_24: Pick<TickerData, "percent_change_24">;
+  //   }[];
+  // }
+
+
+export interface BiggestMoversChartProps {
+  biggestMovers: {
+    pair: string;
+    percent_change_24: number;
+  }[];
+}
+
    

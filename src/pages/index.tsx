@@ -1,6 +1,13 @@
 import AverageTicketValue from "@/components/AverageTicketValue";
+import BiggestMoversChart from "@/components/BiggestMoversChart";
 import { calculateAverageLast } from "@/functions";
-import { Buttons, TickerData, Last, BTCtoOthers } from "@/types";
+import {
+  Buttons,
+  TickerData,
+  Last,
+  BTCtoOthers,
+  BiggestMoversChartProps,
+} from "@/types";
 import Head from "next/head";
 
 export const getServerSideProps = async () => {
@@ -98,21 +105,19 @@ export default function Home({
     Number(finexLast)
   );
 
-  const BiggestMovers = bitstampData?.sort((a, b) => {
-    // To consider negative values as big as positive ones,
-    // we'll take the absolute value of each percent_change_24
+  const BiggestMoversAll = bitstampData?.sort((a, b) => {
     const aPercentChange = Math.abs(a.percent_change_24);
     const bPercentChange = Math.abs(b.percent_change_24);
-
-    // Return the difference between the two absolute values
     return bPercentChange - aPercentChange;
   });
-  console.log(
-    BiggestMovers?.slice(0, 3).map(({ pair, percent_change_24 }) => ({
-      pair,
-      percent_change_24,
-    }))
-  );
+  const BiggestMovers = BiggestMoversAll
+    ? BiggestMoversAll.slice(0, 3).map(({ pair, percent_change_24 }) => ({
+        pair,
+        percent_change_24,
+      }))
+    : null;
+  console.log(BiggestMovers);
+
   return (
     <>
       <Head>
@@ -124,6 +129,11 @@ export default function Home({
       <main className="flex flex-col md:flex-row">
         <div className="bg-red-600 w-full flex justify-center items-center">
           <AverageTicketValue average={average} />
+          {BiggestMovers ? (
+            <BiggestMoversChart biggestMovers={BiggestMovers} />
+          ) : (
+            <></>
+          )}
         </div>
         <div className="bg-blue-600 w-full">
           <h2>what the world</h2>
