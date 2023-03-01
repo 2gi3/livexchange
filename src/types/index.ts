@@ -12,6 +12,7 @@ export interface TickerData {
   ask: number;
   open_24: number;
   percent_change_24: number;
+  pair: string
   }
 
   export type Last = Pick<TickerData, 'last'>;
@@ -20,4 +21,7 @@ export interface TickerData {
     [key: string]: Pick<TickerData, 'last'>;
   }
   
+  export type AverageTicketValueProp={
+    average: number | string
+  }
    

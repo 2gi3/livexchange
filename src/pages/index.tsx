@@ -1,3 +1,5 @@
+import AverageTicketValue from "@/components/AverageTicketValue";
+import { calculateAverageLast } from "@/functions";
 import { Buttons, TickerData, Last, BTCtoOthers } from "@/types";
 import Head from "next/head";
 
@@ -80,13 +82,21 @@ export default function Home({
   finexLast,
   tradingPairs,
 }: {
-  bitstampData: any;
-  coinbaseBTCtoOthers: any;
-  finexLast: any;
+  bitstampData: TickerData[] | null;
+  coinbaseBTCtoOthers: BTCtoOthers | null;
+  finexLast: Last | null;
   tradingPairs: Buttons;
 }) {
-  // console.log(tradingPairs);
-  console.log(coinbaseBTCtoOthers);
+  const bitstampBtcUsd = bitstampData?.find((obj) => obj.pair === "BTC/USD");
+  const coinbaseBtcUsd = coinbaseBTCtoOthers
+    ? Number(coinbaseBTCtoOthers["USD"])
+    : null;
+
+  const average = calculateAverageLast(
+    bitstampBtcUsd?.last,
+    coinbaseBtcUsd,
+    Number(finexLast)
+  );
   return (
     <>
       <Head>
@@ -96,8 +106,8 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col md:flex-row">
-        <div className="bg-red-600 w-full">
-          <h1>hello world</h1>
+        <div className="bg-red-600 w-full flex justify-center items-center">
+          <AverageTicketValue average={average} />
         </div>
         <div className="bg-blue-600 w-full">
           <h2>what the world</h2>
