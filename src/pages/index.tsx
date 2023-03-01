@@ -97,6 +97,22 @@ export default function Home({
     coinbaseBtcUsd,
     Number(finexLast)
   );
+
+  const BiggestMovers = bitstampData?.sort((a, b) => {
+    // To consider negative values as big as positive ones,
+    // we'll take the absolute value of each percent_change_24
+    const aPercentChange = Math.abs(a.percent_change_24);
+    const bPercentChange = Math.abs(b.percent_change_24);
+
+    // Return the difference between the two absolute values
+    return bPercentChange - aPercentChange;
+  });
+  console.log(
+    BiggestMovers?.slice(0, 3).map(({ pair, percent_change_24 }) => ({
+      pair,
+      percent_change_24,
+    }))
+  );
   return (
     <>
       <Head>
