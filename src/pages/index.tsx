@@ -132,7 +132,9 @@ export default function Home({
           {BiggestMovers ? (
             <BiggestMoversChart biggestMovers={BiggestMovers} />
           ) : (
-            <></>
+            <div>
+              <p>The 'Biggest Movers' chart is not available at the moment</p>
+            </div>
           )}
         </div>
         <div className="bg-blue-600 w-full">
