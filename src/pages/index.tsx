@@ -127,17 +127,20 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col md:flex-row">
-        <div className="bg-red-600 w-full flex justify-center items-center">
+        <div className=" w-full flex justify-center items-center">
           <AverageTicketValue average={average} />
           {BiggestMovers ? (
             <BiggestMoversChart biggestMovers={BiggestMovers} />
           ) : (
             <div>
-              <p>The 'Biggest Movers' chart is not available at the moment</p>
+              <p>
+                The &quot;Biggest Movers&quot; chart is not available at the
+                moment
+              </p>
             </div>
           )}
         </div>
-        <div className="bg-blue-600 w-full">
+        <div className="bg-blue-600 w-full m-8">
           <h2>what the world</h2>
         </div>
       </main>

@@ -41,5 +41,3 @@ export interface BiggestMoversChartProps {
     percent_change_24: number;
   }[];
 }
-
-   
