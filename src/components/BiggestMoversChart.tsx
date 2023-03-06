@@ -15,7 +15,6 @@ function BiggestMoversChart({ biggestMovers }: BiggestMoversChartProps) {
       .attr("width", viewPortWidth)
       .attr("height", viewPortHeight)
       .attr("overflow", "visible");
-    // .attr("margin-top", "50px");
 
     const xScale = d3
       .scaleBand()
@@ -39,28 +38,30 @@ function BiggestMoversChart({ biggestMovers }: BiggestMoversChartProps) {
         "transform",
         (val) =>
           `translate(${xScale(val.pair)}, ${
-            viewPortHeight - -val.percent_change_24 * 10
+            viewPortHeight - val.percent_change_24 * 10
           })`
       )
       .call((g) =>
         g
           .append("rect")
           .attr("width", "44px")
-          .attr("height", (val) => -val.percent_change_24 * 10)
+          .attr("height", (val) => val.percent_change_24 * 10)
           .attr("fill", "#00DB06")
       )
       .call((g) =>
         g
           .append("text")
-          // .attr("class", "label")
-          .attr("y", (val) => -val.percent_change_24 * 10 - 4)
-          // .attr("dy", "0px")
+          .attr("y", -11)
+          .attr("x", 6)
           .text((val) => val.percent_change_24.toFixed(2))
       );
   }, []);
 
   return (
-    <div className="bg-red-700 m-11">
+    <div className="m-11">
+      <h3 className="mx-11 mb-[-11px]">
+        Biggest market movers 24H&nbsp;/&nbsp;%
+      </h3>
       <svg className={styles.biggestMoversGraph} ref={svgViewPort}></svg>
     </div>
   );
