@@ -1,5 +1,6 @@
 import AverageTicketValue from "@/components/AverageTicketValue";
 import BiggestMoversChart from "@/components/BiggestMoversChart";
+import ButtonsContainer from "@/components/ButtonsContainer";
 import { calculateAverageLast } from "@/functions";
 import {
   Buttons,
@@ -116,7 +117,6 @@ export default function Home({
         percent_change_24,
       }))
     : null;
-  console.log(BiggestMovers);
 
   return (
     <>
@@ -140,8 +140,8 @@ export default function Home({
             </div>
           )}
         </div>
-        <div className="bg-blue-600 w-full m-8">
-          <h2>what the world</h2>
+        <div className="w-full m-8">
+          <ButtonsContainer pairs={tradingPairs} />
         </div>
       </main>
     </>

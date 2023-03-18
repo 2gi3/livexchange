@@ -41,3 +41,8 @@ export interface BiggestMoversChartProps {
     percent_change_24: number;
   }[];
 }
+
+export interface PairContextType {
+  secectedPair: string;
+  setSelectedPAir: React.Dispatch<React.SetStateAction<string>>;
+}

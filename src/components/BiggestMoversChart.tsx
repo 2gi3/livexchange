@@ -38,21 +38,23 @@ function BiggestMoversChart({ biggestMovers }: BiggestMoversChartProps) {
         "transform",
         (val) =>
           `translate(${xScale(val.pair)}, ${
-            viewPortHeight - val.percent_change_24 * 10
+            viewPortHeight - Math.abs(val.percent_change_24 * 5)
           })`
       )
       .call((g) =>
         g
           .append("rect")
           .attr("width", "44px")
-          .attr("height", (val) => val.percent_change_24 * 10)
-          .attr("fill", "#00DB06")
+          .attr("height", (val) => Math.abs(val.percent_change_24 * 5))
+          .attr("fill", (val) =>
+            val.percent_change_24 >= 0 ? "#00DB06" : "red"
+          )
       )
       .call((g) =>
         g
           .append("text")
           .attr("y", -11)
-          .attr("x", 6)
+          // .attr("x", 2)
           .text((val) => val.percent_change_24.toFixed(2))
       );
   }, []);
