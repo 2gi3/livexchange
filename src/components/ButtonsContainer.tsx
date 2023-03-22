@@ -22,9 +22,10 @@ function ButtonsContainer({ pairs }: { pairs: Buttons }) {
               return pair;
             }
           })
-          .map((pair) => {
+          .map((pair, i) => {
             return (
               <button
+                key={`${pair}-${i}`}
                 className="primaryButton"
                 onClick={() => setSelectedPAir(pair)}
               >
