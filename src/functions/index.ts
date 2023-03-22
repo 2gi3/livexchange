@@ -1,3 +1,5 @@
+import { FetcherArgs } from "@/types"
+
 export   const calculateAverageLast = (
     a?: number | null,
     b?: number | null,
@@ -23,4 +25,18 @@ export   const calculateAverageLast = (
     const date = new Date(timestamp * 1000);
     const formattedDate = date.toLocaleString("en-GB");
     return formattedDate;
+  };
+
+  export const fetcherLineGraph = async (...args: FetcherArgs) => {
+    const response = await fetch(...args).then((res) => res.json());
+    const timestamp = Number(response.timestamp);
+    const last = parseFloat(response.last);
+  
+    const date = new Date(timestamp * 1000);
+    const formattedDate = date.toLocaleTimeString("it-IT");
+  
+    return {
+      formattedDate,
+      last,
+    };
   };

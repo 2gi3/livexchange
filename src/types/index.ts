@@ -41,3 +41,10 @@ export type KeyValueDisplayerProps = {
   objectKey: string;
   value: number;
 }
+
+export type LineGraphData = {
+  timestamp: string;
+  last: string;
+}
+
+export type FetcherArgs = [RequestInfo, RequestInit?];

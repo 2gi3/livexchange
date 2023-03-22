@@ -102,7 +102,6 @@ export default function Home({
   const secectedPairValues = bitstampData?.find((obj) => {
     return obj.pair === secectedPair;
   });
-  console.log(secectedPairValues);
   const bitstampBtcUsd = bitstampData?.find((obj) => obj.pair === "BTC/USD");
   const coinbaseBtcUsd = coinbaseBTCtoOthers
     ? Number(coinbaseBTCtoOthers["USD"])

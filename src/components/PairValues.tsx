@@ -1,13 +1,14 @@
 import { formatTimestamp } from "@/functions";
 import { TickerData } from "@/types";
 import KeyValueDisplayer from "./KeyValueDisplayer";
+import LineGraph from "./LineGraph";
 
 function PairValues({ values }: { values: TickerData }) {
   const entries = Object.entries(values);
   const timestampEntry = entries.shift();
   const timestamp = timestampEntry ? timestampEntry[1] : 0;
   const formattedTimestamp = formatTimestamp(timestamp);
-  console.log(formattedTimestamp);
+
   return (
     <div>
       <div className="mt-11 mb-5">Last Update: {formattedTimestamp}</div>
@@ -37,6 +38,7 @@ function PairValues({ values }: { values: TickerData }) {
           <KeyValueDisplayer key={key} objectKey={key} value={value} />
         )
       )}
+      <LineGraph />
     </div>
   );
 }
