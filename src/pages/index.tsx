@@ -1,6 +1,8 @@
 import AverageTicketValue from "@/components/AverageTicketValue";
 import BiggestMoversChart from "@/components/BiggestMoversChart";
 import ButtonsContainer from "@/components/ButtonsContainer";
+import PairValues from "@/components/PairValues";
+import { PairContext } from "@/context/pairContext";
 import { calculateAverageLast } from "@/functions";
 import {
   Buttons,
@@ -10,6 +12,7 @@ import {
   BiggestMoversChartProps,
 } from "@/types";
 import Head from "next/head";
+import { useContext } from "react";
 
 export const getServerSideProps = async () => {
   let bitstampData: TickerData[] | null = null;
@@ -95,6 +98,11 @@ export default function Home({
   finexLast: Last | null;
   tradingPairs: Buttons;
 }) {
+  const { secectedPair, setSelectedPAir } = useContext(PairContext);
+  const secectedPairValues = bitstampData?.find((obj) => {
+    return obj.pair === secectedPair;
+  });
+  console.log(secectedPairValues);
   const bitstampBtcUsd = bitstampData?.find((obj) => obj.pair === "BTC/USD");
   const coinbaseBtcUsd = coinbaseBTCtoOthers
     ? Number(coinbaseBTCtoOthers["USD"])
@@ -140,8 +148,16 @@ export default function Home({
             </div>
           )}
         </div>
-        <div className="w-full m-8">
+        <div className="w-full m-8 flex  justify-center items-center flex-col">
           <ButtonsContainer pairs={tradingPairs} />
+          {secectedPairValues ? (
+            <PairValues values={secectedPairValues} />
+          ) : (
+            <h3>
+              Sorry, the values for this trading pair are not available at the
+              moment
+            </h3>
+          )}
         </div>
       </main>
     </>

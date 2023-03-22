@@ -25,16 +25,6 @@ export interface TickerData {
     average: number | string
   }
 
-
-
-  // export interface BiggestMoversChartProps {
-  //   biggestMovers: {
-  //     pair: Pick<TickerData, "pair">;
-  //     percent_change_24: Pick<TickerData, "percent_change_24">;
-  //   }[];
-  // }
-
-
 export interface BiggestMoversChartProps {
   biggestMovers: {
     pair: string;
@@ -45,4 +35,9 @@ export interface BiggestMoversChartProps {
 export interface PairContextType {
   secectedPair: string;
   setSelectedPAir: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export type KeyValueDisplayerProps = {
+  objectKey: string;
+  value: number;
 }

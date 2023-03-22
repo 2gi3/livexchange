@@ -4,7 +4,6 @@ import * as d3 from "d3";
 import { useRef, useEffect } from "react";
 
 function BiggestMoversChart({ biggestMovers }: BiggestMoversChartProps) {
-  console.log(biggestMovers);
   const svgViewPort = useRef<SVGSVGElement | null>(null);
   const viewPortWidth = 300;
   const viewPortHeight = 176;

@@ -33,7 +33,6 @@ function ButtonsContainer({ pairs }: { pairs: Buttons }) {
             );
           })}
       </div>
-      <p>{secectedPair}</p>
     </>
   );
 }

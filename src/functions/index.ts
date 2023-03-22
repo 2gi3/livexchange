@@ -15,3 +15,12 @@ export   const calculateAverageLast = (
       return 'Data not available at this time'
     }
   }
+
+  export const formatTimestamp = (timestamp: number): string => {
+    if(timestamp === 0){
+      return 'Timestamp not available'
+    }
+    const date = new Date(timestamp * 1000);
+    const formattedDate = date.toLocaleString("en-GB");
+    return formattedDate;
+  };
