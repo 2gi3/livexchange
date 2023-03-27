@@ -147,7 +147,7 @@ export default function Home({
             </div>
           )}
         </div>
-        <div className="w-full m-8 flex  justify-center items-center flex-col">
+        <div className="m-8 flex  justify-center items-center flex-col">
           <ButtonsContainer pairs={tradingPairs} />
           {secectedPairValues ? (
             <PairValues values={secectedPairValues} />

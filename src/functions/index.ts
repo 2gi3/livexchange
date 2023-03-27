@@ -32,11 +32,11 @@ export   const calculateAverageLast = (
     const timestamp = Number(response.timestamp);
     const last = parseFloat(response.last);
   
-    const date = new Date(timestamp * 1000);
-    const formattedDate = date.toLocaleTimeString("it-IT");
+    // const date = new Date(timestamp * 1000);
+    // const formattedDate = date.toLocaleTimeString("it-IT");
   
     return {
-      formattedDate,
+      timestamp,
       last,
     };
   };

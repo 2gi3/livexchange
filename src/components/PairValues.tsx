@@ -10,7 +10,7 @@ function PairValues({ values }: { values: TickerData }) {
   const formattedTimestamp = formatTimestamp(timestamp);
 
   return (
-    <div>
+    <div className=" w-60">
       <div className="mt-11 mb-5">Last Update: {formattedTimestamp}</div>
       <h2 className=" my-5 text-center ">
         {values.pair}:{" "}
@@ -23,7 +23,7 @@ function PairValues({ values }: { values: TickerData }) {
         </span>
       </h2>
       <div>
-        <div className="w-full flex justify-around items-center my-5 gap-5 ">
+        <div className=" flex justify-around items-center my-5 gap-5">
           <p>{values.low}</p>
           <p>Day&apos;s Range</p>
           <p>{values.high}</p>
@@ -38,7 +38,7 @@ function PairValues({ values }: { values: TickerData }) {
           <KeyValueDisplayer key={key} objectKey={key} value={value} />
         )
       )}
-      <LineGraph />
+      <LineGraph initialValue={[{ timestamp: timestamp, last: values.last }]} />
     </div>
   );
 }

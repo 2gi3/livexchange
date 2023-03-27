@@ -4,6 +4,8 @@ import * as d3 from "d3";
 import { useRef, useEffect } from "react";
 
 function BiggestMoversChart({ biggestMovers }: BiggestMoversChartProps) {
+  const tailwindConfig = require("../../tailwind.config");
+  const { colors } = tailwindConfig.theme.extend;
   const svgViewPort = useRef<SVGSVGElement | null>(null);
   const viewPortWidth = 300;
   const viewPortHeight = 176;
@@ -46,7 +48,7 @@ function BiggestMoversChart({ biggestMovers }: BiggestMoversChartProps) {
           .attr("width", "44px")
           .attr("height", (val) => Math.abs(val.percent_change_24 * 5))
           .attr("fill", (val) =>
-            val.percent_change_24 >= 0 ? "#00DB06" : "red"
+            val.percent_change_24 >= 0 ? colors.gain : colors.loss
           )
       )
       .call((g) =>

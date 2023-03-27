@@ -7,13 +7,13 @@ function ButtonsContainer({ pairs }: { pairs: Buttons }) {
   const [src, setSrc] = useState("");
   return (
     <>
-      <div className="ButtonsContainerWidth h-64 overflow-y-scroll search flex flex-wrap ">
-        <input
-          className="w-60 h-11 mb-5 p-3 border-black border rounded-xl  "
-          type="text"
-          placeholder="Filter"
-          onChange={(e) => setSrc(e.target.value)}
-        />
+      <input
+        className=" h-11 mb-5 p-3 border-black border rounded-xl w-baseXL "
+        type="text"
+        placeholder="Filter"
+        onChange={(e) => setSrc(e.target.value)}
+      />
+      <div className=" overflow-y-scroll search flex flex-wrap h-baseXL w-baseXL ">
         {pairs
           .filter((pair) => {
             if (src === "") {

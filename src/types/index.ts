@@ -1,3 +1,5 @@
+import { Selection } from "d3";
+
 export type Buttons = string[]
 
 export interface TickerData {
@@ -47,4 +49,9 @@ export type LineGraphData = {
   last: string;
 }
 
+export type FormattedLineGraphData ={ timestamp: string;
+  last: string; }
+
 export type FetcherArgs = [RequestInfo, RequestInit?];
+
+export type D3SVGElement = Selection<SVGGElement, unknown, null, undefined>
