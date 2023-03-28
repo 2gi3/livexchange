@@ -1,5 +1,5 @@
-import { formatTimestamp } from "../functions";
-import { TickerData } from "../types";
+import { formatTimestamp } from "@/functions";
+import { TickerData } from "@/types";
 import KeyValueDisplayer from "./KeyValueDisplayer";
 import LineGraph from "./LineGraph";
 
@@ -38,7 +38,7 @@ function PairValues({ values }: { values: TickerData }) {
           <KeyValueDisplayer key={key} objectKey={key} value={value} />
         )
       )}
-      {/* <LineGraph initialValue={[{ timestamp: timestamp, last: values.last }]} /> */}
+      <LineGraph initialValue={[{ timestamp: timestamp, last: values.last }]} />
     </div>
   );
 }

@@ -1,9 +1,9 @@
-import AverageTicketValue from "../components/AverageTicketValue";
-// import BiggestMoversChart from "../components/BiggestMoversChart";
-import ButtonsContainer from "../components/ButtonsContainer";
-import PairValues from "../components/PairValues";
-import { PairContext } from "../context/pairContext";
-import { calculateAverageLast } from "../functions";
+import AverageTicketValue from "@/components/AverageTicketValue";
+import BiggestMoversChart from "@/components/BiggestMoversChart";
+import ButtonsContainer from "@/components/ButtonsContainer";
+import PairValues from "@/components/PairValues";
+import { PairContext } from "@/context/pairContext";
+import { calculateAverageLast } from "@/functions";
 import {
   Buttons,
   TickerData,
@@ -137,8 +137,7 @@ export default function Home({
         <div className=" w-full flex flex-col justify-center items-center">
           <AverageTicketValue average={average} />
           {BiggestMovers ? (
-            // <BiggestMoversChart biggestMovers={BiggestMovers}
-            <></>
+            <BiggestMoversChart biggestMovers={BiggestMovers} />
           ) : (
             <div>
               <p>
