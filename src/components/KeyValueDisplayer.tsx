@@ -1,4 +1,4 @@
-import { KeyValueDisplayerProps } from "@/types";
+import { KeyValueDisplayerProps } from "../types";
 
 function KeyValueDisplayer({ objectKey, value }: KeyValueDisplayerProps) {
   return (

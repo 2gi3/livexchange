@@ -1,4 +1,4 @@
-import styles from "@/styles/biggestMovers.module.css";
+import styles from "../styles/biggestMovers.module.css";
 import { BiggestMoversChartProps } from "@/types";
 import * as d3 from "d3";
 import { useRef, useEffect } from "react";

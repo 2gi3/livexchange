@@ -1,5 +1,5 @@
-import { PairContext } from "@/context/pairContext";
-import { Buttons } from "@/types";
+import { PairContext } from "../context/pairContext";
+import { Buttons } from "../types";
 import { useContext, useState } from "react";
 
 function ButtonsContainer({ pairs }: { pairs: Buttons }) {

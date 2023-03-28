@@ -1,18 +1,8 @@
-import AverageTicketValue from "../components/AverageTicketValue";
-// import BiggestMoversChart from "../components/BiggestMoversChart";
-import ButtonsContainer from "../components/ButtonsContainer";
-import PairValues from "../components/PairValues";
-import { PairContext } from "../context/pairContext";
-import { calculateAverageLast } from "../functions";
-import {
-  Buttons,
-  TickerData,
-  Last,
-  BTCtoOthers,
-  BiggestMoversChartProps,
-} from "@/types";
+import AverageTicketValue from "../../components/AverageTicketValue";
+
+import { calculateAverageLast } from "../../functions";
+import { Buttons, TickerData, Last, BTCtoOthers } from "@/types";
 import Head from "next/head";
-import { useContext } from "react";
 
 export const getServerSideProps = async () => {
   let bitstampData: TickerData[] | null = null;
@@ -87,7 +77,7 @@ export const getServerSideProps = async () => {
   }
 };
 
-export default function Home({
+export default function Experiment1({
   bitstampData,
   coinbaseBTCtoOthers,
   finexLast,
@@ -98,10 +88,6 @@ export default function Home({
   finexLast: Last | null;
   tradingPairs: Buttons;
 }) {
-  const { secectedPair, setSelectedPAir } = useContext(PairContext);
-  const secectedPairValues = bitstampData?.find((obj) => {
-    return obj.pair === secectedPair;
-  });
   const bitstampBtcUsd = bitstampData?.find((obj) => obj.pair === "BTC/USD");
   const coinbaseBtcUsd = coinbaseBTCtoOthers
     ? Number(coinbaseBTCtoOthers["USD"])
@@ -112,18 +98,6 @@ export default function Home({
     coinbaseBtcUsd,
     Number(finexLast)
   );
-
-  const BiggestMoversAll = bitstampData?.sort((a, b) => {
-    const aPercentChange = Math.abs(a.percent_change_24);
-    const bPercentChange = Math.abs(b.percent_change_24);
-    return bPercentChange - aPercentChange;
-  });
-  const BiggestMovers = BiggestMoversAll
-    ? BiggestMoversAll.slice(0, 3).map(({ pair, percent_change_24 }) => ({
-        pair,
-        percent_change_24,
-      }))
-    : null;
 
   return (
     <>
@@ -136,28 +110,6 @@ export default function Home({
       <main className="flex flex-col md:flex-row">
         <div className=" w-full flex flex-col justify-center items-center">
           <AverageTicketValue average={average} />
-          {BiggestMovers ? (
-            // <BiggestMoversChart biggestMovers={BiggestMovers}
-            <></>
-          ) : (
-            <div>
-              <p>
-                The &quot;Biggest Movers&quot; chart is not available at the
-                moment
-              </p>
-            </div>
-          )}
-        </div>
-        <div className="m-8 flex  justify-center items-center flex-col">
-          <ButtonsContainer pairs={tradingPairs} />
-          {secectedPairValues ? (
-            <PairValues values={secectedPairValues} />
-          ) : (
-            <h3>
-              Sorry, the values for this trading pair are not available at the
-              moment
-            </h3>
-          )}
         </div>
       </main>
     </>

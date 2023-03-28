@@ -1,5 +1,5 @@
-import { PairContext } from "@/context/pairContext";
-import { fetcherLineGraph } from "@/functions";
+import { PairContext } from "../context/pairContext";
+import { fetcherLineGraph } from "../functions";
 import { useContext, useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 // import * as d3 from "d3";
@@ -8,7 +8,7 @@ import { curveCardinal, line } from "d3-shape";
 import { select } from "d3-selection";
 import { axisBottom, axisLeft } from "d3-axis";
 import { timeParse } from "d3-time-format";
-import { D3SVGElement, FormattedLineGraphData, LineGraphData } from "@/types";
+import { D3SVGElement, FormattedLineGraphData, LineGraphData } from "../types";
 import { extent, max, min } from "d3";
 
 function LineGraph({ initialValue }: any) {
@@ -21,7 +21,7 @@ function LineGraph({ initialValue }: any) {
     []
   );
   const { data, error } = useSWR(
-    `http://localhost:3000/api/pairs_data/${endpoint}`,
+    `https://livexchange.netlify.app/api/pairs_data/${endpoint}`,
     fetcherLineGraph,
     { refreshInterval: 10000 }
   );
