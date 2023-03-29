@@ -120,6 +120,7 @@ export default function Experiment1({
           <AverageTicketValue average={average} />
         </div>
         <div>
+          helloooo
           {secectedPairValues ? (
             <PairValues values={secectedPairValues} />
           ) : (
