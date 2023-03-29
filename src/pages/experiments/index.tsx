@@ -1,8 +1,10 @@
 import AverageTicketValue from "../../components/AverageTicketValue";
-
 import { calculateAverageLast } from "../../functions";
-import { Buttons, TickerData, Last, BTCtoOthers } from "@/types";
+import { Buttons, TickerData, Last, BTCtoOthers } from "../../types";
 import Head from "next/head";
+import PairValues from "../../components/PairValues";
+import { useContext } from "react";
+import { PairContext } from "../../context/pairContext";
 
 export const getServerSideProps = async () => {
   let bitstampData: TickerData[] | null = null;
@@ -99,6 +101,12 @@ export default function Experiment1({
     Number(finexLast)
   );
 
+  const { secectedPair, setSelectedPAir } = useContext(PairContext);
+
+  const secectedPairValues = bitstampData?.find((obj) => {
+    return obj.pair === secectedPair;
+  });
+
   return (
     <>
       <Head>
@@ -110,6 +118,16 @@ export default function Experiment1({
       <main className="flex flex-col md:flex-row">
         <div className=" w-full flex flex-col justify-center items-center">
           <AverageTicketValue average={average} />
+        </div>
+        <div>
+          {secectedPairValues ? (
+            <PairValues values={secectedPairValues} />
+          ) : (
+            <h3>
+              Sorry, the values for this trading pair are not available at the
+              moment
+            </h3>
+          )}
         </div>
       </main>
     </>

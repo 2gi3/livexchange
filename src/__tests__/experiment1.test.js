@@ -3,6 +3,7 @@ import { rest } from "msw";
 import { setupServer } from "msw/node";
 import Experiment1, { getServerSideProps } from "../pages/experiments/index";
 import { calculateAverageLast } from "../functions";
+import { PairContext } from "../context/pairContext";
 
 const server = setupServer(
   rest.get("https://www.bitstamp.net/api/v2/ticker/", (req, res, ctx) => {
@@ -585,13 +586,17 @@ describe("Experiment1 page", () => {
     );
     const secectedPair = "BTC/USD";
 
-    render(<Experiment1 {...props} />);
+    render(
+      <PairContext.Provider value={{ secectedPair, setSelectedPAir: () => {} }}>
+        <Experiment1 {...props} />
+      </PairContext.Provider>
+    );
 
     const averageTicketValue = screen.getByTestId(
       "average-ticket-value"
     ).textContent;
-    console.log(averageTicketValue);
     expect(averageTicketValue).toBe("44000");
+    console.log(screen.debug());
   });
 
   // it("gets correct server-side props", async () => {
