@@ -133,8 +133,8 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex flex-col md:flex-row">
-        <div className=" w-full flex flex-col justify-center items-center">
+      <main className="flex flex-col md:flex-row justify-evenly max-w-[1200px] mx-auto">
+        <div className="flex flex-col justify-center items-center md:justify-start">
           <AverageTicketValue average={average} />
           {BiggestMovers ? (
             <BiggestMoversChart biggestMovers={BiggestMovers} />
@@ -147,7 +147,7 @@ export default function Home({
             </div>
           )}
         </div>
-        <div className="m-8 flex  justify-center items-center flex-col">
+        <div className="m-8 pt-baseS md:pt-baseXS flex  justify-center items-center flex-col separatedBox">
           <ButtonsContainer pairs={tradingPairs} />
           {secectedPairValues ? (
             <PairValues values={secectedPairValues} />

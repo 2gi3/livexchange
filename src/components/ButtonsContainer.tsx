@@ -8,12 +8,12 @@ function ButtonsContainer({ pairs }: { pairs: Buttons }) {
   return (
     <>
       <input
-        className=" h-11 mb-5 p-3 border-black border rounded-xl w-baseXL "
+        className=" h-11 mb-5 p-3 border-black border rounded-xl w-baseXL md:self-start md:w-[240px] "
         type="text"
         placeholder="Filter"
         onChange={(e) => setSrc(e.target.value)}
       />
-      <div className=" overflow-y-scroll search flex flex-wrap h-baseXL w-baseXL ">
+      <div className=" overflow-y-scroll search flex flex-wrap h-baseXL w-baseXL md:w-[310px]">
         {pairs
           .filter((pair) => {
             if (src === "") {

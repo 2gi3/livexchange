@@ -9,6 +9,22 @@ function BiggestMoversChart({ biggestMovers }: BiggestMoversChartProps) {
   const svgViewPort = useRef<SVGSVGElement | null>(null);
   const viewPortWidth = 300;
   const viewPortHeight = 176;
+  const biggestMover = biggestMovers[0].percent_change_24;
+  let barScale: number;
+
+  if (biggestMover > 65) {
+    barScale = 1;
+  } else if (biggestMover >= 45 && biggestMover <= 65) {
+    barScale = 2;
+  } else if (biggestMover >= 30 && biggestMover <= 45) {
+    barScale = 3;
+  } else if (biggestMover >= 19 && biggestMover <= 30) {
+    barScale = 4;
+  } else if (biggestMover >= 10 && biggestMover <= 19) {
+    barScale = 7;
+  } else {
+    barScale = 12;
+  }
 
   useEffect(() => {
     const viewPort = d3
@@ -39,14 +55,14 @@ function BiggestMoversChart({ biggestMovers }: BiggestMoversChartProps) {
         "transform",
         (val) =>
           `translate(${xScale(val.pair)}, ${
-            viewPortHeight - Math.abs(val.percent_change_24 * 5)
+            viewPortHeight - Math.abs(val.percent_change_24 * barScale)
           })`
       )
       .call((g) =>
         g
           .append("rect")
           .attr("width", "44px")
-          .attr("height", (val) => Math.abs(val.percent_change_24 * 5))
+          .attr("height", (val) => Math.abs(val.percent_change_24 * barScale))
           .attr("fill", (val) =>
             val.percent_change_24 >= 0 ? colors.gain : colors.loss
           )
@@ -55,16 +71,13 @@ function BiggestMoversChart({ biggestMovers }: BiggestMoversChartProps) {
         g
           .append("text")
           .attr("y", -11)
-          // .attr("x", 2)
           .text((val) => val.percent_change_24.toFixed(2))
       );
   }, []);
 
   return (
     <div className="m-11">
-      <h3 className="mx-11 mb-[-11px]">
-        Biggest market movers 24H&nbsp;/&nbsp;%
-      </h3>
+      <h3 className="mx-11 mb-[-11px]">Biggest Movers 24H&nbsp;/&nbsp;%</h3>
       <svg className={styles.biggestMoversGraph} ref={svgViewPort}></svg>
     </div>
   );

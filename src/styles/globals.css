@@ -42,3 +42,10 @@
 	background: rgba(255,0,0,0.4); 
     cursor:pointer
 }
+
+
+@media (max-width: 768px) {
+    .separatedBox{
+        border-top: 1px solid rgb(163, 163, 163);
+    }
+  }

@@ -32,7 +32,7 @@ function LineGraph({ initialValue }: any) {
       return newGraphData;
     });
 
-    console.log(graphData);
+    // console.log(graphData);
   }, [data]);
   useEffect(() => {
     setGraphData(initialValue);
@@ -44,7 +44,7 @@ function LineGraph({ initialValue }: any) {
   const height = 250 - margin.top - margin.bottom;
 
   useEffect(() => {
-    console.log("graph data updated:", graphData);
+    // console.log("graph data updated:", graphData);
 
     const svg = select(svgRef.current);
 
