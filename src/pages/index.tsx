@@ -1,55 +1,31 @@
+//  External packages and Next.js components
+import Head from "next/head";
+import { useContext } from "react";
+
+//Internal components and context
 import AverageTicketValue from "@/components/AverageTicketValue";
 import BiggestMoversChart from "@/components/BiggestMoversChart";
 import ButtonsContainer from "@/components/ButtonsContainer";
 import PairValues from "@/components/PairValues";
 import { PairContext } from "@/context/pairContext";
-import { calculateAverageLast } from "@/functions";
-import {
-  Buttons,
-  TickerData,
-  Last,
-  BTCtoOthers,
-  BiggestMoversChartProps,
-} from "@/types";
-import Head from "next/head";
-import { useContext } from "react";
+import backupButtons from "../backupButtons.json";
+
+// Types and functions
+import { calculateAverageLast, mapValuesToNumber } from "@/functions";
+import { Buttons, TickerData, Last, BTCtoOthers } from "@/types";
 
 export const getServerSideProps = async () => {
   let bitstampData: TickerData[] | null = null;
   let coinbaseBTCtoOthers: BTCtoOthers | null = null;
   let finexLast: Last | null = null;
-  let buttonsData: Buttons = [
-    "TES/TTT",
-    "BTC/USD",
-    "BTC/EUR",
-    "BTC/GBP",
-    "BTC/JPY",
-    "BTC/KRW",
-  ];
+  let buttonsData: Buttons = backupButtons.tradingPairs;
 
   try {
     let [bitstampData, finexLast, coinbaseBTCtoOthers, tradingPairs] =
       await Promise.all([
         fetch("https://www.bitstamp.net/api/v2/ticker/")
           .then((res) => res.json())
-          .then((json) =>
-            json.map((obj: any) => {
-              return {
-                ...obj,
-                timestamp: Number(obj.timestamp),
-                open: Number(obj.open),
-                high: Number(obj.high),
-                low: Number(obj.low),
-                last: Number(obj.last),
-                volume: Number(obj.volume),
-                vwap: Number(obj.vwap),
-                bid: Number(obj.bid),
-                ask: Number(obj.ask),
-                open_24: Number(obj.open_24),
-                percent_change_24: Number(obj.percent_change_24),
-              };
-            })
-          ),
+          .then((json) => json.map(mapValuesToNumber)),
         fetch("https://api-pub.bitfinex.com/v2/tickers?symbols=tBTCUSD")
           .then((res) => res.json())
           .then((json) => json[0][1]),
@@ -98,7 +74,7 @@ export default function Home({
   finexLast: Last | null;
   tradingPairs: Buttons;
 }) {
-  const { secectedPair, setSelectedPAir } = useContext(PairContext);
+  const { secectedPair } = useContext(PairContext);
   const secectedPairValues = bitstampData?.find((obj) => {
     return obj.pair === secectedPair;
   });
@@ -135,7 +111,10 @@ export default function Home({
       </Head>
       <main className="flex flex-col md:flex-row justify-evenly max-w-[1200px] mx-auto">
         <div className="flex flex-col justify-center items-center md:justify-start">
-          <AverageTicketValue average={average} />
+          <AverageTicketValue
+            average={average}
+            change24={bitstampBtcUsd?.percent_change_24}
+          />
           {BiggestMovers ? (
             <BiggestMoversChart biggestMovers={BiggestMovers} />
           ) : (

@@ -19,7 +19,7 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/__tests__/experiment1.test.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/__tests__/experiment1.test.ts"],
   "exclude": ["node_modules"],
   "types": [
     "aria-query"

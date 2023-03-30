@@ -1,7 +1,7 @@
 import { LineGraphData } from '@/types';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async (req: NextApiRequest, res: NextApiResponse<LineGraphData>) => {
+export const getBitstampTicker = async (req: NextApiRequest, res: NextApiResponse<LineGraphData>) => {
     const { query: { pair } } = req;
   
     try {

@@ -8,7 +8,7 @@ function ButtonsContainer({ pairs }: { pairs: Buttons }) {
   return (
     <>
       <input
-        className=" h-11 mb-5 p-3 border-black border rounded-xl w-baseXL md:self-start md:w-[240px] "
+        className=" h-11 mb-5 p-3 border-black border rounded-xl w-baseXL md:self-start md:w-[242px] "
         type="text"
         placeholder="Filter"
         onChange={(e) => setSrc(e.target.value)}
