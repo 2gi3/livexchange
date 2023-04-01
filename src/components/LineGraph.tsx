@@ -47,6 +47,7 @@ function LineGraph({ initialValue }: any) {
     // console.log("graph data updated:", graphData);
 
     const svg = select(svgRef.current);
+    svg.selectAll(".text").remove();
 
     const filteredTimestampData = graphData.filter((d) => !!d.timestamp);
     const parseTime = timeParse("%s"); // Create a time parser
@@ -106,14 +107,17 @@ function LineGraph({ initialValue }: any) {
 
     // const lastIndex = graphData.length <= 2 ? 0 : graphData.length - 1;
     svg
-      .append("circle")
-      .attr("class", "circle")
-      .attr("cx", x(parseTime(graphData[graphData.length - 1].timestamp)!))
-      .attr("cy", y(parseInt(graphData[graphData.length - 1].last)))
-      .attr("r", 4)
-      .attr("fill", "#ee0808")
-      .attr("stroke", "#0bf7f7")
-      .attr("stroke-width", "2px");
+      .append("text")
+      .attr("class", "text")
+      .attr("x", x(parseTime(graphData[graphData.length - 1].timestamp)!) - 20)
+      .attr("y", y(parseInt(graphData[graphData.length - 1].last)))
+      .text(`${graphData[graphData.length - 1].last}`)
+      .attr("font-size", `12px`)
+      .attr("margin-left", "-20px");
+    // .attr("r", 4)
+    // .attr("fill", "#ee0808")
+    // .attr("stroke", "#0bf7f7")
+    // .attr("stroke-width", "2px");
     // .attr("transform", `translate(${margin.left},${margin.top})`)
   }, [graphData, margin, width, height]);
 
@@ -124,7 +128,7 @@ function LineGraph({ initialValue }: any) {
         <g className="x-axis" />
         <g className="y-axis" />
         <path className="line" />
-        <circle className="circle" />
+        <text className="text" />
       </svg>
     </div>
   );
