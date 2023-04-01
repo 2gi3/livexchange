@@ -2,6 +2,7 @@ import styles from "../styles/biggestMovers.module.css";
 import { BiggestMoversChartProps } from "@/types";
 import * as d3 from "d3";
 import { useRef, useEffect } from "react";
+import { scaleBar } from "@/functions";
 
 function BiggestMoversChart({ biggestMovers }: BiggestMoversChartProps) {
   const tailwindConfig = require("../../tailwind.config");
@@ -9,22 +10,7 @@ function BiggestMoversChart({ biggestMovers }: BiggestMoversChartProps) {
   const svgViewPort = useRef<SVGSVGElement | null>(null);
   const viewPortWidth = 300;
   const viewPortHeight = 176;
-  const biggestMover = biggestMovers[0].percent_change_24;
-  let barScale: number;
-
-  if (biggestMover > 65) {
-    barScale = 1;
-  } else if (biggestMover >= 45 && biggestMover <= 65) {
-    barScale = 2;
-  } else if (biggestMover >= 30 && biggestMover <= 45) {
-    barScale = 3;
-  } else if (biggestMover >= 19 && biggestMover <= 30) {
-    barScale = 4;
-  } else if (biggestMover >= 10 && biggestMover <= 19) {
-    barScale = 7;
-  } else {
-    barScale = 12;
-  }
+  const barScale = scaleBar(biggestMovers[0].percent_change_24);
 
   useEffect(() => {
     const viewPort = d3

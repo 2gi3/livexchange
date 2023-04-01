@@ -1,11 +1,17 @@
 import { AverageTicketValueProp } from "../types";
 
-function AverageTicketValue({ average }: AverageTicketValueProp) {
+function AverageTicketValue({ average, change24 }: AverageTicketValueProp) {
+  const fontColor = change24 && change24 >= 0 ? "text-gain" : "text-loss";
   return (
     <div className="mx-auto my-11 inline-block text-center">
-      <h1>BTC/USD</h1>
-      <h3>Average Ticket Value</h3>
-      <p data-testid="average-ticket-value">{average}</p>
+      <h1 className="font-bold">BTC/USD</h1>
+      <p>Average Ticket Value</p>
+      <p
+        data-testid="average-ticket-value"
+        className={`font-bold ${fontColor}`}
+      >
+        {average}
+      </p>
     </div>
   );
 }

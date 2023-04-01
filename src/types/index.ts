@@ -17,6 +17,21 @@ export interface TickerData {
   pair: string
   }
 
+  export interface UnformattedTickerData {
+    timestamp: string;
+    open: string;
+    high: string;
+    low: string;
+    last: string;
+    volume: string;
+    vwap: string;
+    bid: string;
+    ask: string;
+    open_24: string;
+    percent_change_24: string;
+    }
+
+
   export type Last = Pick<TickerData, 'last'>;
 
   export type BTCtoOthers = {
@@ -25,6 +40,7 @@ export interface TickerData {
   
   export type AverageTicketValueProp={
     average: number | string
+    change24: number | undefined
   }
 
 export interface BiggestMoversChartProps {

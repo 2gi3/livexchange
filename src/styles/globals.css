@@ -8,7 +8,7 @@
 
 
 .primaryButton{
-    @apply  flex justify-center items-center rounded-xl h-11 w-28 p-5 mr-5 mb-5 bg-blue-400 uppercase leading-normal shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-blue-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]
+    @apply  flex justify-center items-center rounded-xl h-11 w-28 p-5 mr-5 mb-5 uppercase leading-normal shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-slate-100 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-blue-100 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-blue-100 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)]
 
 }
 
@@ -23,11 +23,11 @@
     -webkit-border-radius: 12px;
     min-height: 44px;
     border-radius: 12px;
-    background: rgba(255, 0, 0, 0.700); 
+    background: rgb(241 245 249); 
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
     }
 ::-webkit-scrollbar-thumb:hover{
-    background: rgb(255, 0, 0);
+    background: #ebf8ff;
     cursor:pointer
 }
 ::-webkit-scrollbar-track{
@@ -39,7 +39,7 @@
     /* margin-block: 5px;  */
 }
 ::-webkit-scrollbar-thumb:window-inactive {
-	background: rgba(255,0,0,0.4); 
+	background: rgb(241 245 249); 
     cursor:pointer
 }
 

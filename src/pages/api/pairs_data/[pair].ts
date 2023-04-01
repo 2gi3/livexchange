@@ -1,4 +1,4 @@
-import { LineGraphData } from '@/types';
+import { LineGraphData } from '../../../types';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse<LineGraphData>) => {
