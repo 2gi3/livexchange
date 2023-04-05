@@ -52,7 +52,9 @@ function BiggestMoversChart({ biggestMovers }: BiggestMoversChartProps) {
           .attr("fill", (val) =>
             val.percent_change_24 >= 0 ? colors.gain : colors.loss
           )
+          // .attr("data-test-id", (val, i) => `biggestMoversBar${i}`)
       )
+
       .call((g) =>
         g
           .append("text")
