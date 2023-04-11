@@ -22,6 +22,10 @@ module.exports = {
       margins: spacing,
       width: spacing,
       height: spacing,
+      gap: spacing,
+      screens: {
+        tablet: "650px",
+      },
     },
   },
   plugins: [],

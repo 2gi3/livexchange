@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function Calendly() {
   useEffect(() => {
@@ -13,12 +13,13 @@ function Calendly() {
   }, []);
 
   return (
-    <div
-      className="calendly-inline-widget"
-      //   data-url="https://calendly.com/gippolito/30min_call"
-      data-url="https://calendly.com/gippolito/30min_call?hide_event_type_details=1"
-      style={{ minWidth: "320px", height: "630px" }}
-    ></div>
+    <>
+      <div
+        className="calendly-inline-widget"
+        data-url="https://calendly.com/gippolito/45min_call?hide_event_type_details=1"
+        style={{ minWidth: "320px", height: "630px" }}
+      ></div>
+    </>
   );
 }
 

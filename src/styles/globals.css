@@ -49,3 +49,17 @@
         border-top: 1px solid rgb(163, 163, 163);
     }
   }
+
+
+  /* calendly bug fix --Start */
+  .calendly-inline-widget{
+    min-height: 995px !important;
+  }
+  @media (min-width: 1001px) {
+    .calendly-inline-widget{
+        min-height: 740px !important;
+      }
+  }
+    /* calendly bug fix --End */
+
+

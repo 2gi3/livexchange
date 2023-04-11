@@ -13,6 +13,8 @@ import backupButtons from "../backupButtons.json";
 // Types and functions
 import { calculateAverageLast, mapValuesToNumber } from "@/functions";
 import { Buttons, TickerData, Last, BTCtoOthers } from "@/types";
+import Calendly from "@/components/Calendly";
+import Info from "@/components/Info";
 
 export const getServerSideProps = async () => {
   const bitfinex = process.env.NEXT_PUBLIC_BITFINEX_URL;
@@ -116,10 +118,15 @@ export default function Home({
       </Head>
       <main className="flex flex-col md:flex-row justify-evenly max-w-[1200px] mx-auto">
         <div className="flex flex-col justify-center items-center md:justify-start">
-          <AverageTicketValue
-            average={average}
-            change24={bitstampBtcUsd?.percent_change_24}
-          />
+          <Info
+            route="@/components/AverageTicketValue"
+            info="Average price between 3 different APIs"
+          >
+            <AverageTicketValue
+              average={average}
+              change24={bitstampBtcUsd?.percent_change_24}
+            />
+          </Info>
           {BiggestMovers ? (
             <BiggestMoversChart biggestMovers={BiggestMovers} />
           ) : (

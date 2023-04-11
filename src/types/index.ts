@@ -76,3 +76,8 @@ export type D3SVGElement = Selection<SVGGElement, unknown, null, undefined>
 export type LayoutProps = {
   children: ReactNode
 }
+
+export type InfoProps = LayoutProps & {
+  route: string,
+  info: string
+}
