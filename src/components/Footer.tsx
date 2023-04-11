@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function Footer() {
   return (
-    <footer className="w-full flex justify-center">
+    <footer className="w-full flex justify-center mt-11 py-11 bg-blue-100">
       <div className="border border-gray-400 bg-white rounded flex h-[130px]">
         <div className=" flex justify-center items-center">
           <Image
@@ -17,7 +17,7 @@ function Footer() {
             <p className="text-sm text-gray-600 flex items-center">
               Website by:
             </p>
-            <div className="text-gray-900 font-bold text-xl mb-2">
+            <div className="text-gray-900 font-bold mb-2 text-l">
               Giuseppe Ippolito
             </div>
             <p className="text-gray-700 text-base">Typesctipt Developer</p>
