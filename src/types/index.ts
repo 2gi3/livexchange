@@ -1,4 +1,5 @@
 import { Selection } from "d3";
+import { ReactNode } from 'react'
 
 export type Buttons = string[]
 
@@ -71,3 +72,7 @@ export type FormattedLineGraphData ={ timestamp: string;
 export type FetcherArgs = [RequestInfo, RequestInit?];
 
 export type D3SVGElement = Selection<SVGGElement, unknown, null, undefined>
+
+export type LayoutProps = {
+  children: ReactNode
+}

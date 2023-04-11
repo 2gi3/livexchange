@@ -13,7 +13,6 @@ import { max, min } from "d3";
 function LineGraph({ initialValue }: any) {
   const svgRef = useRef<SVGSVGElement>(null);
 
-  // get and manage data
   const { secectedPair } = useContext(PairContext);
   const endpoint = secectedPair.replace("/", "").toLowerCase();
   const [graphData, setGraphData] = useState<any[] | FormattedLineGraphData[]>(
@@ -31,7 +30,6 @@ function LineGraph({ initialValue }: any) {
       return newGraphData;
     });
 
-    // console.log(graphData);
   }, [data]);
   useEffect(() => {
     setGraphData(initialValue);
@@ -44,13 +42,12 @@ function LineGraph({ initialValue }: any) {
   const graphPadding = 10;
 
   useEffect(() => {
-    // console.log("graph data updated:", graphData);
 
     const svg = select(svgRef.current);
     svg.selectAll(".text").remove();
 
     const filteredTimestampData = graphData.filter((d) => !!d.timestamp);
-    const parseTime = timeParse("%s"); // Create a time parser
+    const parseTime = timeParse("%s");
     const x = scaleTime()
       .domain([
         min(filteredTimestampData, (d) => parseTime(d.timestamp))!,
@@ -105,7 +102,6 @@ function LineGraph({ initialValue }: any) {
 
     console.log(graphData[graphData.length - 1]);
 
-    // const lastIndex = graphData.length <= 2 ? 0 : graphData.length - 1;
     svg
       .append("text")
       .attr("class", "text")

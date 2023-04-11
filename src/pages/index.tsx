@@ -13,6 +13,7 @@ import backupButtons from "../backupButtons.json";
 // Types and functions
 import { calculateAverageLast, mapValuesToNumber } from "@/functions";
 import { Buttons, TickerData, Last, BTCtoOthers } from "@/types";
+import Calendly from "@/components/Calendly";
 
 export const getServerSideProps = async () => {
   const bitfinex = process.env.NEXT_PUBLIC_BITFINEX_URL;
