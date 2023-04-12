@@ -116,6 +116,25 @@ export default function Home({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <div>
+        <ul>
+          <li>Next.js</li>
+          <li>TypeScript</li>
+          <li>D3.js</li>
+          <li>Tailwind</li>
+          <li>Cypress</li>
+        </ul>
+        <div>
+          <p>Context management: useContext</p>
+        </div>
+        <a
+          href="https://github.com/2gi3/livexchange"
+          target="blank"
+          className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-600"
+        >
+          Code repository
+        </a>
+      </div>
       <main className="flex flex-col md:flex-row justify-evenly max-w-[1200px] mx-auto">
         <div className="flex flex-col justify-center items-center md:justify-start">
           <Info
@@ -128,7 +147,9 @@ export default function Home({
             />
           </Info>
           {BiggestMovers ? (
-            <BiggestMoversChart biggestMovers={BiggestMovers} />
+            <Info route="@/components/BiggestMoversChart" info="">
+              <BiggestMoversChart biggestMovers={BiggestMovers} />
+            </Info>
           ) : (
             <div>
               <p>
@@ -139,9 +160,20 @@ export default function Home({
           )}
         </div>
         <div className="m-8 pt-baseS md:pt-baseXS flex  justify-center items-center flex-col separatedBox">
+          <div className="mb-6 mt-[-23px]">
+            <p className="font-bold mt-6">@/components/ButtonsContainer</p>
+            <p className="text-red-600"></p>
+          </div>
           <ButtonsContainer pairs={tradingPairs} />
           {secectedPairValues ? (
-            <PairValues values={secectedPairValues} />
+            <Info
+              route="@/components/PairValues"
+              info="from bitstampData API, values displayed in children components"
+            >
+              <div>
+                <PairValues values={secectedPairValues} />
+              </div>
+            </Info>
           ) : (
             <h3>
               Sorry, the values for this trading pair are not available at the

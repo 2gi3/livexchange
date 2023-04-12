@@ -53,7 +53,7 @@ const NavBar = () => {
           >
             About this Project
           </Link>
-          <Link href="/bookings">
+          <Link href="/aboutMe">
             <p className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-600">
               About Me
             </p>

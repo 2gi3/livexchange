@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { formatTimestamp } from "../functions";
 import { TickerData } from "../types";
 import KeyValueDisplayer from "./KeyValueDisplayer";
@@ -8,6 +9,10 @@ function PairValues({ values }: { values: TickerData }) {
   const timestampEntry = entries.shift();
   const timestamp = timestampEntry ? timestampEntry[1] : 0;
   const formattedTimestamp = formatTimestamp(timestamp);
+
+  const router = useRouter();
+  const currentPath = router.asPath;
+  console.log(currentPath);
 
   return (
     <div className=" w-60">
@@ -37,6 +42,16 @@ function PairValues({ values }: { values: TickerData }) {
         key === "high" ? null : (
           <KeyValueDisplayer key={key} objectKey={key} value={value} />
         )
+      )}
+      {currentPath === "/aboutProject" ? (
+        <div className="mb-[-32px]">
+          <p className="font-bold mt-11">@/components/LineGraph</p>
+          <p className="text-red-600">
+            Serverless function @pages/api/pairs_data/[pair]
+          </p>
+        </div>
+      ) : (
+        <></>
       )}
       <LineGraph initialValue={[{ timestamp: timestamp, last: values.last }]} />
     </div>

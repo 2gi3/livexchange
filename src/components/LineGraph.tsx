@@ -29,7 +29,6 @@ function LineGraph({ initialValue }: any) {
       const newGraphData = [...prevGraphData, data].slice(-10);
       return newGraphData;
     });
-
   }, [data]);
   useEffect(() => {
     setGraphData(initialValue);
@@ -42,7 +41,6 @@ function LineGraph({ initialValue }: any) {
   const graphPadding = 10;
 
   useEffect(() => {
-
     const svg = select(svgRef.current);
     svg.selectAll(".text").remove();
 
