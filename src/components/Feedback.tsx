@@ -7,11 +7,14 @@ const FeedbackForm: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      const response = await fetch("/api/feedbacks", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ feedback }),
-      });
+      const response = await fetch(
+        "https://livexchange.netlify.app/api/feedbacks",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ feedback }),
+        }
+      );
       if (response.ok) {
         setFeedback("");
         setFeedbackPlaceHolder("Thank you for your feedback!");

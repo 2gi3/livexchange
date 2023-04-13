@@ -33,6 +33,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/aria-query": "^5.0.1",
+    "@types/testing-library__cypress": "^5.0.9",
     "autoprefixer": "^10.4.13",
     "cypress": "^12.9.0",
     "eslint-plugin-cypress": "^2.13.2",
