@@ -17,7 +17,7 @@ function Bookings() {
         </p>
 
         <p className="tablet:mb-0 mb-12">
-          I'm looking forward to speaking with you soon!
+          I&apos;m looking forward to speaking with you soon!
         </p>
       </div>
       <Calendly />
