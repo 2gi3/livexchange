@@ -81,3 +81,28 @@ export type InfoProps = LayoutProps & {
   route: string,
   info: string
 }
+
+export interface TwilioMessage {
+  body: string;
+  numSegments: string;
+  direction: 'inbound' | 'outbound-api' | 'outbound-reply' | 'outbound-call' | 'outbound-call-response' | 'outbound-status';
+  from: string;
+  to: string;
+  dateUpdated: Date;
+  price: number | null;
+  errorMessage: string | null;
+  uri: string;
+  accountSid: string;
+  numMedia: string;
+  status: 'queued' | 'sending' | 'sent' | 'failed' | 'delivered' | 'undelivered' | 'receiving' | 'received';
+  messagingServiceSid: string | null;
+  sid: string;
+  dateSent: Date | null;
+  dateCreated: Date;
+  errorCode: number | null;
+  priceUnit: 'USD' | 'EUR' | 'JPY' | 'GBP' | 'AUD' | 'CAD';
+  apiVersion: string;
+  subresourceUris: {
+    media?: string;
+    };
+}

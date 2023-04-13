@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 
 const connection = {};
 const mongoURI = process.env.MONGODB_URI;
-console.log(`uri is --- ${mongoURI}`);
 
 export async function dbConnect() {
   if (connection.isConnected) {
