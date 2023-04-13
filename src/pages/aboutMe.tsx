@@ -6,6 +6,7 @@ function aboutMe() {
         <li>React</li>
         <li>TypeScript</li>
         <li>Javascript</li>
+        <li>Redux</li>
         <li>D3.js</li>
       </ul>
       <ul className="flex flex-wrap justify-evenly font-semibold gap-baseS px-base pb-11 max-w-xl mx-auto">
