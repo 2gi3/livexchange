@@ -8,7 +8,7 @@ function Bookings() {
           className="text-sm text-gray-600 mb-[-22px]"
           // className="font-bold text-xl text-center w-full"
         >
-          Let's have a chat!
+          Let&apos;s have a chat!
         </p>
         <h1 className="font-bold text-l">Book a 45 minutes interview</h1>
         <p>
