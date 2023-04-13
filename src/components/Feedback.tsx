@@ -30,7 +30,7 @@ const FeedbackForm: React.FC = () => {
         onSubmit={handleSubmit}
       >
         <textarea
-          className=" w-full p-3"
+          className=" w-full p-3 placeholder-black"
           id="feedback"
           name="feedback"
           rows={5}

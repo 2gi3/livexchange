@@ -117,23 +117,61 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <ul>
+        <ul className="flex flex-wrap justify-evenly font-semibold gap-baseS p-base max-w-xl mx-auto">
           <li>Next.js</li>
           <li>TypeScript</li>
-          <li>D3.js</li>
           <li>Tailwind</li>
+          <li>D3.js</li>
+          <li>MongoDB</li>
           <li>Cypress</li>
         </ul>
-        <div>
-          <p>Context management: useContext</p>
+        <div className="flex flex-wrap justify-start px-base max-w-xl mx-auto">
+          <p>
+            Context management:{" "}
+            <span className="font-semibold">useContext</span>
+          </p>
         </div>
-        <a
-          href="https://github.com/2gi3/livexchange"
-          target="blank"
-          className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-gray-600"
-        >
-          Code repository
-        </a>
+        <div className="flex flex-wrap justify-start px-base max-w-xl mx-auto">
+          <a
+            href="https://github.com/2gi3/livexchange"
+            target="blank"
+            className="inline-block text-sm px-4 py-2 leading-none border rounded text-black border-black hover:border-gray-600 hover:text-gray-600 hover:bg-white  mt-11 "
+          >
+            Code repository
+          </a>
+        </div>
+        <div className="flex flex-wrap justify-start p-base max-w-xl mx-auto">
+          <ul>
+            <p className="font-semibold">@pages/api/:</p>
+            <li className="pt-baseS">
+              pairs_data:{" "}
+              <p>
+                The line graph makes a fetch call to this endpoint, here the
+                data is fetched from the server to avoid CORS errors
+              </p>
+            </li>
+            <li className="pt-baseS">
+              feedbacks:{" "}
+              <p>
+                {" "}
+                The anonymous feedback in the footer makes a post request to
+                this endpoint, here the feedback is saved into a{" "}
+                <span className="font-semibold">mongoDB </span>and an SMS alert
+                is sent to my phone with{" "}
+                <span className="font-semibold">Twilio</span>
+              </p>
+            </li>
+            <li className="pt-baseS">
+              testAPI:{" "}
+              <p>
+                {" "}
+                These endpoints return mock-data that is used for developement
+                environment and testing with{" "}
+                <span className="font-semibold">Cypress</span>
+              </p>
+            </li>
+          </ul>
+        </div>
       </div>
       <main className="flex flex-col md:flex-row justify-evenly max-w-[1200px] mx-auto">
         <div className="flex flex-col justify-center items-center md:justify-start">
