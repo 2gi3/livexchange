@@ -77,6 +77,10 @@ export type LayoutProps = {
   children: ReactNode
 }
 
+export type ToggleContentProps = LayoutProps & {
+  button: string
+}
+
 export type InfoProps = LayoutProps & {
   route: string,
   info: string
