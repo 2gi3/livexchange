@@ -79,7 +79,7 @@ function aboutMe() {
         <ul>
           <li>
             <h3 className="font-semibold pt-baseXS">
-              OpenClassrooms - Web-Developer Associate's-level diploma
+              OpenClassrooms - Web-Developer Associate&apos;s-level diploma
               (graduated 05/2022)
             </h3>
             <p>

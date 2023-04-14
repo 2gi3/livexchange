@@ -13,10 +13,10 @@ const NavBar = () => {
       <Link href="/">
         <div className="flex items-center flex-shrink-0 text-white mr-6 hover:text-gray-600">
           <svg
-            className="fill-current h-8 w-16 mr-2"
+            className="fill-current h-8 w-[80px] mr-2"
             width="154"
             height="80"
-            viewBox="120 -45 144 160"
+            viewBox="140 -55 154 180"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -37,7 +37,7 @@ const NavBar = () => {
           >
             <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
           </svg>
-          <p className="font-semibold text-xl text-black tracking-tight hover:text-gray-600">
+          <p className="font-semibold text-xl text-black tracking-tight hover:text-gray-600 pb-[2px]">
             LiveXchange
           </p>
         </div>
