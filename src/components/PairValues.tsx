@@ -16,7 +16,9 @@ function PairValues({ values }: { values: TickerData }) {
 
   return (
     <div className=" w-60">
-      <div className="mt-11 mb-5">Last Update: {formattedTimestamp}</div>
+      <div className="mt-11 mb-5">
+        BitStamp Ticket Values: {formattedTimestamp}
+      </div>
       <h2 className=" my-5 text-center font-bold ">
         {values.pair}:{" "}
         <span
