@@ -2,10 +2,13 @@ import React, { useContext, useState } from "react";
 
 const FeedbackForm: React.FC = () => {
   const [feedback, setFeedback] = useState("");
+  const [sending, setSending] = useState(false);
   const [feedbackPlaceHolder, setFeedbackPlaceHolder] =
     useState("Anonymous Feedback");
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setSending(true);
     try {
       const response = await fetch(
         "https://livexchange.netlify.app/api/feedbacks",
@@ -20,9 +23,13 @@ const FeedbackForm: React.FC = () => {
         setFeedbackPlaceHolder("Thank you for your feedback!");
       } else {
         console.error("Error submitting feedback:", response.statusText);
+        setFeedback("Error submitting feedback, please thy again later");
       }
     } catch (error) {
       console.error("Error submitting feedback:", error);
+      setFeedback("Error submitting feedback, please thy again later");
+    } finally {
+      setSending(false);
     }
   };
 
@@ -32,6 +39,13 @@ const FeedbackForm: React.FC = () => {
         className="border border-gray-400 bg-white rounded flex w-[302px] h-[130px] flex-col items-end relative"
         onSubmit={handleSubmit}
       >
+        {sending ? (
+          <div className="absolute bg-blue-100 top-3 left-3 right-3">
+            <p>Sending...</p>
+          </div>
+        ) : (
+          <></>
+        )}
         <textarea
           className=" w-full p-3 placeholder-black"
           id="feedback"

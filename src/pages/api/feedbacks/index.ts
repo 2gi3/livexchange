@@ -21,6 +21,8 @@ export default async function handler(
       const { feedback, name, email } = req.body;
       const newFeedback = new Feedback({ feedback, name, email });
       await newFeedback.save();
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Content-Type', 'application/json');
       res.status(200).json({ message: 'Feedback saved successfully' });
       client.messages
   // .create({ body: `Feedback for liveXchange: ${feedback}`, from: virtualNumber, to: phoneNumber })
