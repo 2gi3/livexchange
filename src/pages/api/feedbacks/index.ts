@@ -21,7 +21,6 @@ export default async function handler(
       const { feedback, name, email } = req.body;
       const newFeedback = new Feedback({ feedback, name, email });
       await newFeedback.save();
-      res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json({ message: 'Feedback saved successfully' });
       client.messages
@@ -31,6 +30,12 @@ export default async function handler(
       console.error(error);
       res.status(500).json({ message: 'Error saving feedback' });
     }
+  } else if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Content-Type', 'application/json');
+    res.status(200).end();
   } else {
     res.status(404).json({ message: 'Invalid request method' });
   }

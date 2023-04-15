@@ -23,11 +23,17 @@ const FeedbackForm: React.FC = () => {
         setFeedbackPlaceHolder("Thank you for your feedback!");
       } else {
         console.error("Error submitting feedback:", response.statusText);
-        setFeedback("Error submitting feedback, please thy again later");
+        setFeedback("");
+        setFeedbackPlaceHolder(
+          "Error submitting feedback, please thy again later"
+        );
       }
     } catch (error) {
       console.error("Error submitting feedback:", error);
-      setFeedback("Error submitting feedback, please thy again later");
+      setFeedback("");
+      setFeedbackPlaceHolder(
+        "Error submitting feedback, please thy again later"
+      );
     } finally {
       setSending(false);
     }

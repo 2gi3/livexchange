@@ -131,7 +131,7 @@ export default function Home({
             <span className="font-semibold">useContext</span>
           </p>
         </div>
-        <div className="flex flex-wrap justify-start px-base max-w-xl mx-auto">
+        <div className="flex flex-wrap justify-start px-base max-w-xl mx-auto ">
           <a
             href="https://github.com/2gi3/livexchange"
             target="blank"
@@ -140,7 +140,7 @@ export default function Home({
             Code repository
           </a>
         </div>
-        <div className="flex flex-wrap justify-start p-base max-w-xl mx-auto">
+        <div className="flex flex-wrap justify-start p-base max-w-xl mx-auto mb-6">
           <ul>
             <p className="font-semibold">@pages/api/:</p>
             <li className="pt-baseS">
@@ -173,7 +173,7 @@ export default function Home({
           </ul>
         </div>
       </div>
-      <main className="flex flex-col md:flex-row justify-evenly max-w-[1200px] mx-auto">
+      <main className="flex flex-col md:flex-row justify-evenly max-w-[1200px] mx-auto border-t border-1 border-gray-600 pt-6">
         <div className="flex flex-col justify-center items-center md:justify-start">
           <Info
             route="@/components/AverageTicketValue"
